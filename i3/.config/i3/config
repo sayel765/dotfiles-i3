@@ -1,0 +1,188 @@
+# ______________________________________________________________________________________________________________________________
+# 
+# IMPORTANT: Portion X contains lines approximately from x to y.
+# You might not be using some of the applications configured in this portion, so consider commenting them out first.
+# In fact, it is a good idea to review the entire file and comment out or delete any sections you do not need.
+#
+# ______________________________________________________________________________________________________________________________
+
+# Set mod key and font
+set $mod Mod4
+font pango:JetBrainsMono Nerd Font 10
+
+# Window appearance
+new_window pixel 1
+new_float pixel 1
+for_window [class=".*"] border pixel 1
+for_window [class=".*"] title_format " %class "
+default_border pixel 2
+set $border-clr #01579B
+# set $border-clr #ffffff
+#client.focused         <border>   <background> <text> <indicator> <child_border>
+client.focused          $border-clr #1e1e2e #ffffff #5e81ac $border-clr
+client.unfocused        $border-clr #37474F #888888 #4c566a #2f343f
+client.focused_inactive #2f343f #2f343f #aaaaaa #3b4252 #2f343f
+client.urgent           #cc3700 #cc3700 #ffffff #cc3700 #cc3700
+client.background       #2e3440
+hide_edge_borders none
+
+# ______________________________________________________________________________________________________________________________
+# __________________________________________ Beginning of PORTION X ____________________________________________________________
+# ______________________________________________________________________________________________________________________________
+
+# GTK File chooser Dialogue Area Fixing
+for_window [window_role="GtkFileChooserDialog"] floating enable
+floating_maximum_size 800 x 600
+
+# For nemo-fileroller
+for_window [class="org.gnome.FileRoller"] floating enable, resize set 800 600
+
+# Auto Start
+exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id ibus-daemon -drx
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id picom
+exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id bash -c "sleep 0.5 && (pkill fusuma || true) && /home/sayel/.local/share/gem/ruby/3.4.0/bin/fusuma -d &"
+exec --no-startup-id dunst
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec --no-startup-id udiskie -t
+exec --no-startup-id copyq
+bindsym $mod+v exec --no-startup-id copyq menu
+# exec --no-startup-id conky
+
+# Clipboard and screenshot
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+
+# ______________________________________________________________________________________________________________________________
+# ________________________________________________ END of PORTION X ____________________________________________________________
+# ______________________________________________________________________________________________________________________________
+
+# Lock screen with Ctrl+Shift+L
+bindsym Control+Shift+l exec --no-startup-id i3lock
+
+# Volume controls
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Floating modifier
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+# Terminal
+bindsym $mod+Return exec kitty
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w kill
+bindsym $mod+Shift+Delete [class=".*"] kill
+bindsym $mod+Delete kill
+bindsym --whole-window $mod+button2 kill
+
+# Launchers
+bindsym $mod+d exec dmenu_run
+bindsym $mod+space exec --no-startup-id rofi -show drun
+
+# Focus movement
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Window split direction [N]ormal and [B]ellow
+bindsym $mod+n split h
+bindsym $mod+b split v
+
+# Fullscreen
+bindsym $mod+m fullscreen toggle
+
+# Layouts
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f floating toggle
+bindsym $mod+Shift+f focus mode_toggle
+bindsym $mod+i focus child
+bindsym $mod+o focus parent
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+minus workspace prev
+bindsym $mod+equal workspace next
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Reload, restart, exit
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Up resize grow height 10 px or 10 ppt
+    bindsym Down resize shrink height 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Gaps
+gaps inner 2
+gaps outer 0

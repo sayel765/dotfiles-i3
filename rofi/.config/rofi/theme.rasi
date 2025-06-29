@@ -1,0 +1,93 @@
+* {
+    font: "JetBrainsMono Nerd Font 10";
+    base: #35354e;
+    overlay: #6c7086;
+    text: #cdd6f4;
+    subtext: #a6adc8;
+    mauve: #cba6f7;
+    border-radius: 8px;
+    width: 500px;
+}
+
+/* Main Layout */
+window {
+    background-color: @base;
+    border-radius: @border-radius;
+    border-width: 1px;
+    border-color: @overlay;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+}
+
+listview {
+    background-color: @base;
+    columns: 1;
+    lines: 6;
+    spacing: 5px;
+    margin: 10px 10px 20px 20px;
+    padding: 5px;
+}
+
+/* Elements */
+element {
+    padding: 4px 10px;
+    text-color: @text;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 20px;
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected {
+    background-color: @mauve;
+    text-color: @base;
+    border-radius: 5px;
+}
+
+/* Prompt + Entry */
+inputbar {
+    background-color: @base;
+    padding: 10px;
+    border-radius: @border-radius;
+    children: [prompt, entry];
+}
+
+prompt {
+    background-color: @mauve;
+    text-color: @base;
+    padding: 6px 10px;
+    border-radius: 5px;
+    margin: 0px 10px 0px 0px;
+}
+
+entry {
+    background-color: @base;
+    text-color: @text;
+    padding: 6px 10px;
+}
+
+/* Message / Status */
+message, textbox {
+    background-color: @base;
+    text-color: @mauve;
+    padding: 5px;
+}
+
+/* Buttons */
+button {
+    background-color: @base;
+    text-color: @overlay;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+button selected {
+    background-color: @mauve;
+    text-color: @base;
+}

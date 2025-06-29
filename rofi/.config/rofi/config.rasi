@@ -1,0 +1,20 @@
+@import "~/.config/rofi/theme.rasi"
+
+configuration {
+    modi: "run,drun,window,ssh";
+    terminal: "kitty";
+
+    show-icons: true;
+    hide-scrollbar: true;
+    disable-history: false;
+    sidebar-mode: false;
+
+    display-calc: "   ";
+    display-drun: "   Apps ";
+    display-ssh: " 󰦝  SSH ";
+    display-run: "   Run ";
+    display-window: "   Windows ";
+
+    drun-display-format: "{icon} {name}";
+    location: 0;
+}
