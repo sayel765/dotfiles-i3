@@ -24,3 +24,4 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias cat='bat'
 alias ls='lsd'
+alias vi='nvim'

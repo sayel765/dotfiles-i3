@@ -17,4 +17,6 @@ configuration {
 
     drun-display-format: "{icon} {name}";
     location: 0;
+    
+    matching: "fuzzy";
 }

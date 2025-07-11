@@ -34,6 +34,9 @@ hide_edge_borders none
 for_window [window_role="GtkFileChooserDialog"] floating enable
 floating_maximum_size 800 x 600
 
+# Making nemo floating instead of tilled appearance
+for_window [class="Nemo"] floating enable
+
 # For nemo-fileroller
 for_window [class="org.gnome.FileRoller"] floating enable, resize set 800 600
 
@@ -46,8 +49,8 @@ for_window [class="Psensor"] floating enable
 # Auto Start
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-for_window [class="Blueman-manager"] floating enable
 exec --no-startup-id nm-applet
+for_window [class="Blueman-manager"] floating enable
 exec --no-startup-id blueman-applet
 exec --no-startup-id ibus-daemon -drx
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -100,7 +103,7 @@ bindsym --whole-window $mod+button2 kill
 
 # Launchers
 bindsym $mod+d exec dmenu_run
-bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id rofi -show drun -matching fuzzy
 
 # Scratchpad related
 bindsym $mod+Shift+m move scratchpad
