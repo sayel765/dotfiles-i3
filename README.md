@@ -1,4 +1,4 @@
-# [s4sayel dotfiles](https://github.com/s4sayel/dotfiles)  
+# [s4sayel dotfile](https://github.com/s4sayel/dotfile)  
 
 This is my lightweight linux setup with efficient window management, optimized for speed and aesthetics.  
 Feel free to explore and customize these configurations for your own setup.
