@@ -49,9 +49,9 @@ for_window [class="Psensor"] floating enable
 # Auto Start
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
 for_window [class="Blueman-manager"] floating enable
-exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+# exec --no-startup-id blueman-applet
 exec --no-startup-id ibus-daemon -drx
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id picom
