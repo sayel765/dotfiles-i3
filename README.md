@@ -1,4 +1,4 @@
-# [s4sayel dotfile](https://github.com/s4sayel/dotfile)  
+# Sayel's i3 dotfile
 
 This is my lightweight linux setup with efficient window management, optimized for speed and aesthetics.  
 Feel free to explore and customize these configurations for your own setup.
